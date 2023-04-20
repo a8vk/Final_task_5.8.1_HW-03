@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block line %}
+{{ name }}
+{% endblock line %}
+
+# испольовать когда форма, регистрация, оплата, авторизация
+{% csrf_token %}
+
+{% if user.is_authenticated %}
+# отображение данных только зарегистрированным
+{% endif %}
+
+<html>
+
+<head></head>
+<body>
+
+{% for x in goods %}
+<div><h1>{{ x }}</h1></div>
+
+{% if name in x.name %}
+<h1>{{ name }}</h1>
+{% endif %}
+
+{% endfor %}
+{{ line }}
+</body>
+</html>
