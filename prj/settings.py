@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django_filters',
 ]
 
+SITE_ID = 1
+LOGIN_REDIRECT_URL = "/news"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

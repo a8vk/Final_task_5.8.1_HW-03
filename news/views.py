@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import New
 from .filters import NewFilter
@@ -72,7 +73,8 @@ def news_search(request):
     return render(request, 'news_search.html', {'filter': news_filter, 'news_list': news_filter.qs})
 
 
-class UncosCreateView(CreateView):
+class UncosCreateView(LoginRequiredMixin, CreateView):
+    raise_exception = True
     model = New
     fields = ['title', 'text', 'category']
     template_name = 'news_form.html'
