@@ -14,6 +14,8 @@ from .views import (
     ArticlesUpdateView,
     ArticlesDeleteView,
 )
+from accounts.views import SignUp
+
 
 urlpatterns = [
     path('', NewsListView.as_view(template_name='index.html'), name='index'),
@@ -22,6 +24,7 @@ urlpatterns = [
     path('articles/', ArticlesNewsListView.as_view(), name='articles'),
     path('news/', NewsSearchView.as_view(), name='news'),
     path('search/', news_search, name='news_search'),
+    path('../accounts/signup/', SignUp.as_view(), name='signup'),
 
     path('uncos/create/', UncosCreateView.as_view(), name='uncos_create'),
     path('uncos/<int:pk>/edit/', UncosUpdateView.as_view(), name='uncos_edit'),

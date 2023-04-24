@@ -5,7 +5,8 @@
         <h1>Новости</h1>
         <ul>
             {% for new in news %}
-                <li><a href="{% url 'detail' new.pk %}">{{ new.title }}</a></li>
+                <li><a href="{% url 'detail' new.pk %}">{{ new.title }}</a>
+                </li>
             {% endfor %}
         </ul>
     {% else %}
