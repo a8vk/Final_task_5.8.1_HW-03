@@ -3,9 +3,15 @@
 {% block content %}
     {% if news %}
         <h1>Новости</h1>
+        {% if perms.news.add_new %}
+        <a href="{% url 'uncos_create' %}">Создание новости</a>
+        {% endif %}
         <ul>
             {% for new in news %}
                 <li><a href="{% url 'detail' new.pk %}">{{ new.title }}</a>
+                    {% if perms.news.change_new %}
+                    <a href="{% url 'uncos_edit' new.pk %}">Редактирование новости</a>
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>
